@@ -75,11 +75,11 @@ fun DataTextFeild(
         onValueChange = onValueChange,
         label = { Text(label, color = Color.LightGray) },
         shape = RoundedCornerShape(25.dp),
-//        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = TextFieldDefaults.colors(
 //            containerColor = Color(0xFFFFE4E6),
 //            unfocusedBorderColor = Color.LightGray,
 //            focusedBorderColor = Color.Gray
-//        ),
+        ),
         modifier = modifier
     )
 }
