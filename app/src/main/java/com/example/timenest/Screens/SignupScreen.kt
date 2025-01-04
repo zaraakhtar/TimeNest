@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,6 +15,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.timenest.ui.theme.TimeNestTheme
+import androidx.compose.material3.OutlinedTextFieldDefaults
+
+
+
 
 @Composable
 fun SignupScreen() {
@@ -75,10 +78,11 @@ fun DataTextFeild(
         onValueChange = onValueChange,
         label = { Text(label, color = Color.LightGray) },
         shape = RoundedCornerShape(25.dp),
-        colors = TextFieldDefaults.colors(
-//            containerColor = Color(0xFFFFE4E6),
-//            unfocusedBorderColor = Color.LightGray,
-//            focusedBorderColor = Color.Gray
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedContainerColor = Color(0xFFFFE4E6),
+            focusedContainerColor = Color(0xFFFFE4E6),
+            unfocusedBorderColor = Color.LightGray,
+            focusedBorderColor = Color.Gray
         ),
         modifier = modifier
     )
