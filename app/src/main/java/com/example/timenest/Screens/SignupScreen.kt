@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.timenest.R
@@ -37,14 +39,6 @@ fun SignupScreen(
         verticalArrangement = Arrangement.SpaceAround
     ){
         Column {
-//            Image(
-//                painter = painterResource(R.drawable.login),
-//                contentDescription = null,
-//                contentScale = ContentScale.FillHeight,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .fillMaxWidth(0.25f)
-//            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -58,16 +52,31 @@ fun SignupScreen(
         MyTextFeild(
             modifier = Modifier.fillMaxWidth(),
             textFeildState = TextFieldState(),
-            leadingIcon = Icons.Outlined.Email,
-            hint = "Email",
+            leadingIcon = Icons.Outlined.Person,
+            hint = "Name",
             trailingIcon = Icons.Outlined.Check,
         )
         MyTextFeild(
             modifier = Modifier.fillMaxWidth(),
             textFeildState = TextFieldState(),
+            leadingIcon = Icons.Outlined.Email,
+            hint = "Email",
+            keyboardType = KeyboardType.Email,
+            trailingIcon = Icons.Outlined.Check,
+        )
+
+        MyTextFeild(
+            modifier = Modifier.fillMaxWidth(),
+            textFeildState = TextFieldState(),
             hint = "Password",
             leadingIcon = Icons.Outlined.Lock,
-            trailingText = "Forgot?",
+            isPassword = true,
+        )
+MyTextFeild(
+            modifier = Modifier.fillMaxWidth(),
+            textFeildState = TextFieldState(),
+            hint = "Confirm Password",
+            leadingIcon = Icons.Outlined.Lock,
             isPassword = true,
         )
 
@@ -76,13 +85,13 @@ fun SignupScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = "Login",
+                text = "Sign Up",
                 fontSize = 17.sp,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
         }
         Text(
-            text = "or, login with...",
+            text = "or, Register with...",
             fontSize = 15.sp,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -103,11 +112,11 @@ fun SignupScreen(
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text(
-                text = "Don't have an account?",
+                text = "Already have an account?",
                 fontSize = 16.sp,
             )
             Text(
-                text = "Register",
+                text = "Login Here",
                 fontSize = 16.sp,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
