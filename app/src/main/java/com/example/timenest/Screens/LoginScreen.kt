@@ -1,6 +1,6 @@
 package com.example.timenest.Screens
 
-import android.graphics.Color
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -28,10 +28,12 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -93,6 +95,51 @@ fun LoginScreen(
             isPassword = true,
         )
 
+        OutlinedButton(
+            onClick = {},
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Login",
+                fontSize = 17.sp,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+        }
+        Text(
+            text = "or, login with...",
+            fontSize = 15.sp,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .alpha(0.5f)
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            AuthOption(image = R.drawable.google)
+            AuthOption(image = R.drawable.facebook)
+            AuthOption(
+                image = R.drawable.apple,
+                tint = MaterialTheme.colorScheme.onBackground
+            )
+        }
+        Row (
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
+            Text(
+                text = "Don't have an account?",
+                fontSize = 16.sp,
+            )
+            Text(
+                text = "Register",
+                fontSize = 16.sp,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .clickable {  }
+            )
+
+        }
+            Spacer(modifier = Modifier.height(1.dp))
 
     }
 }

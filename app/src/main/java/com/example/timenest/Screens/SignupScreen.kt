@@ -1,108 +1,121 @@
 package com.example.timenest.Screens
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.timenest.ui.theme.TimeNestTheme
+import androidx.compose.ui.unit.sp
+import com.example.timenest.R
 
 @Composable
-fun SignupScreen() {
-    var name by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+fun SignupScreen(
+    modifier: Modifier = Modifier,
+){
+    Column (
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.SpaceAround
+    ){
+        Column {
+//            Image(
+//                painter = painterResource(R.drawable.login),
+//                contentDescription = null,
+//                contentScale = ContentScale.FillHeight,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .fillMaxWidth(0.25f)
+//            )
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                Text(
-                    text = "Create Account",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
+            Spacer(modifier = Modifier.height(16.dp))
 
-                DataTextField(
-                    value = name,
-                    onValueChange = { name = it },
-                    label = "Name",
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                DataTextField(
-                    value = email,
-                    onValueChange = { email = it },
-                    label = "Email",
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                DataTextField(
-                    value = password,
-                    onValueChange = { password = it },
-                    label = "Password",
-                    modifier = Modifier.fillMaxWidth(),
-                    isPassword = true
-                )
-
-                Button(
-                    onClick = { /* Handle signup */ },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
-                    ),
-                    shape = RoundedCornerShape(16.dp)
-                ) {
-                    Text(
-                        "Sign Up",
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-            }
+            Text(
+                text = "Signup",
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 30.sp
+            )
         }
+
+        MyTextFeild(
+            modifier = Modifier.fillMaxWidth(),
+            textFeildState = TextFieldState(),
+            leadingIcon = Icons.Outlined.Email,
+            hint = "Email",
+            trailingIcon = Icons.Outlined.Check,
+        )
+        MyTextFeild(
+            modifier = Modifier.fillMaxWidth(),
+            textFeildState = TextFieldState(),
+            hint = "Password",
+            leadingIcon = Icons.Outlined.Lock,
+            trailingText = "Forgot?",
+            isPassword = true,
+        )
+
+        OutlinedButton(
+            onClick = {},
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Login",
+                fontSize = 17.sp,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+        }
+        Text(
+            text = "or, login with...",
+            fontSize = 15.sp,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .alpha(0.5f)
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            AuthOption(image = R.drawable.google)
+            AuthOption(image = R.drawable.facebook)
+            AuthOption(
+                image = R.drawable.apple,
+                tint = MaterialTheme.colorScheme.onBackground
+            )
+        }
+        Row (
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
+            Text(
+                text = "Don't have an account?",
+                fontSize = 16.sp,
+            )
+            Text(
+                text = "Register",
+                fontSize = 16.sp,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .clickable {  }
+            )
+
+        }
+        Spacer(modifier = Modifier.height(1.dp))
+
     }
 }
-
-@Composable
-fun DataTextField(
-    value: String,
-    onValueChange: (String) -> Unit,
-    label: String,
-    modifier: Modifier = Modifier,
-    isPassword: Boolean = false
-) {
-    OutlinedTextField(
-        value = value,
-        onValueChange = onValueChange,
-        label = { Text(label) },
-        shape = RoundedCornerShape(16.dp),
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f),
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-            focusedLabelColor = MaterialTheme.colorScheme.primary,
-            unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant
-        ),
-        visualTransformation = if (isPassword) PasswordVisualTransformation() else androidx.compose.ui.text.input.VisualTransformation.None,
-        modifier = modifier,
-        textStyle = MaterialTheme.typography.bodyLarge
-    )
-}
-
