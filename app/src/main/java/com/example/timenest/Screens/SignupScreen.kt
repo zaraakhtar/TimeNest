@@ -106,10 +106,3 @@ fun DataTextField(
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun SignupScreenPreview() {
-    TimeNestTheme {
-        SignupScreen()
-    }
-}
