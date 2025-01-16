@@ -6,13 +6,14 @@ import androidx.activity.compose.setContent
 import com.example.timenest.Screens.LoginScreen
 import com.example.timenest.Screens.SignupScreen
 import com.example.timenest.ui.theme.TimeNestTheme
+import kotlin.math.sign
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             TimeNestTheme {
-                SignupScreen()
+               LoginScreen()
             }
         }
     }

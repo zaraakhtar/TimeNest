@@ -16,6 +16,7 @@ import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -23,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -37,11 +39,11 @@ fun SignupScreen(
         modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 35.dp),
-        verticalArrangement = Arrangement.SpaceAround
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ){
         Column {
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(120.dp))
 
             Text(
                 text = "Signup",
@@ -83,6 +85,9 @@ MyTextFeild(
 
         Button(
             onClick = {},
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFF4081)
+            ),
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(

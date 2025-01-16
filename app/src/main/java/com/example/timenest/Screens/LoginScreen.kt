@@ -30,11 +30,13 @@ import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.SnackbarDefaults.color
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -58,12 +60,12 @@ fun LoginScreen(
     Column (
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.SpaceAround
+            .padding(horizontal = 35.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ){
         Column {
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(120.dp))
 
             Text(
                 text = "Login",
@@ -88,14 +90,20 @@ fun LoginScreen(
             isPassword = true,
         )
 
-        OutlinedButton(
+        Button(
             onClick = {},
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFF4081)
+            ),
             modifier = Modifier.fillMaxWidth()
+
         ) {
             Text(
                 text = "Login",
                 fontSize = 17.sp,
-                modifier = Modifier.padding(vertical = 8.dp)
+                modifier = Modifier
+                    .padding(vertical = 8.dp)
+
             )
         }
         Text(
@@ -202,7 +210,7 @@ fun TextTextFeild(
         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
         modifier = Modifier.background(
             color = Color(0xFFFFF0F3),
-            shape = RoundedCornerShape(14.dp)),
+            shape = RoundedCornerShape(25.dp)),
         decorator = { innerTextField ->
             Column{
                 Row(
@@ -282,7 +290,7 @@ fun PasswordTextFeild(
         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
         modifier = Modifier.background(
             color = Color(0xFFFFF0F3),
-            shape = RoundedCornerShape(14.dp)
+            shape = RoundedCornerShape(25.dp)
         ),
         decorator = { innerTextField ->
             Column{
@@ -306,7 +314,7 @@ fun PasswordTextFeild(
                     else if (trailingText != null){
                         Text(
                             text = trailingText,
-                            color = MaterialTheme.colorScheme.primary,
+                            color = Color(0xFFFF4081),
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier.padding(end = 4.dp)
                                 .clickable { onleadingClick() }
@@ -338,7 +346,7 @@ fun PasswordTextFeild(
                     }else if (trailingText != null){
                         Text(
                             text = trailingText,
-                            color = MaterialTheme.colorScheme.primary,
+                            color = Color(0xFFFF4081),
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier
                                 .padding(end = 4.dp)
@@ -349,7 +357,6 @@ fun PasswordTextFeild(
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 
-//                HorizontalDivider(modifier= Modifier.alpha(0.7f))
             }
 
         }
