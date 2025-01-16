@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -35,7 +36,7 @@ fun SignupScreen(
     Column (
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp),
+            .padding(horizontal = 35.dp),
         verticalArrangement = Arrangement.SpaceAround
     ){
         Column {
@@ -80,7 +81,7 @@ MyTextFeild(
             isPassword = true,
         )
 
-        OutlinedButton(
+        Button(
             onClick = {},
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -90,6 +91,9 @@ MyTextFeild(
                 modifier = Modifier.padding(vertical = 8.dp)
             )
         }
+        Spacer(modifier = Modifier.height(30.dp))
+
+
         Text(
             text = "or, Register with...",
             fontSize = 15.sp,
@@ -124,7 +128,8 @@ MyTextFeild(
             )
 
         }
-        Spacer(modifier = Modifier.height(1.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
     }
 }
+

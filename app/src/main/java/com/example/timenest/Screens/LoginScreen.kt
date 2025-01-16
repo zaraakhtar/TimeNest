@@ -3,6 +3,7 @@ package com.example.timenest.Screens
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -61,14 +62,6 @@ fun LoginScreen(
         verticalArrangement = Arrangement.SpaceAround
     ){
         Column {
-//            Image(
-//                painter = painterResource(R.drawable.login),
-//                contentDescription = null,
-//                contentScale = ContentScale.FillHeight,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .fillMaxWidth(0.25f)
-//            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -207,11 +200,16 @@ fun TextTextFeild(
         keyboardOptions = KeyboardOptions(keyboardType=keyboardType),
         lineLimits = TextFieldLineLimits.SingleLine,
         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-        modifier = modifier,
+        modifier = Modifier.background(
+            color = Color(0xFFFFF0F3),
+            shape = RoundedCornerShape(14.dp)),
         decorator = { innerTextField ->
             Column{
                 Row(
-                    modifier = Modifier.height(56.dp),
+                    modifier = Modifier
+                        .height(50.dp)
+                        .padding(horizontal = 12.dp),
+
                     verticalAlignment = Alignment.CenterVertically,
                 ){
                     if(leadingIcon != null){
@@ -220,7 +218,6 @@ fun TextTextFeild(
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                             modifier = Modifier
-                                .padding(end = 4.dp)
                                 .clickable { onleadingClick() }
                         )
                         Spacer(modifier = Modifier.width(16.dp))
@@ -243,7 +240,6 @@ fun TextTextFeild(
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                             modifier = Modifier
-                                .padding(start = 4.dp)
                                 .clickable { onTrailingClick() }
                         )
                     }else if(trailingText != null){
@@ -252,15 +248,14 @@ fun TextTextFeild(
                             color = MaterialTheme.colorScheme.primary,
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier
-                                .padding(end = 4.dp)
                                 .clickable { onTrailingClick() }
                         )
                     }
 
                 }
-                Spacer(modifier = Modifier.height(10.dp))
+//                Spacer(modifier = Modifier.height(10.dp))
 
-                HorizontalDivider(modifier= Modifier.alpha(0.7f))
+//                HorizontalDivider(modifier= Modifier.alpha(0.7f))
             }
 
         }
@@ -285,11 +280,17 @@ fun PasswordTextFeild(
             color = MaterialTheme.colorScheme.onBackground,
         ),
         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-        modifier = modifier,
+        modifier = Modifier.background(
+            color = Color(0xFFFFF0F3),
+            shape = RoundedCornerShape(14.dp)
+        ),
         decorator = { innerTextField ->
             Column{
                 Row(
-                    modifier = Modifier.height(56.dp),
+                    modifier = Modifier
+                        .height(40.dp)
+                        .padding(horizontal = 12.dp),
+
                     verticalAlignment = Alignment.CenterVertically,
                 ){
                     if(leadingIcon != null){
@@ -348,7 +349,7 @@ fun PasswordTextFeild(
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 
-                HorizontalDivider(modifier= Modifier.alpha(0.7f))
+//                HorizontalDivider(modifier= Modifier.alpha(0.7f))
             }
 
         }
